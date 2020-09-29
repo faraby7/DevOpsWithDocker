@@ -1,0 +1,5 @@
+➜  1.11 git:(master) ✗ docker run -d -p 8000:8000 -v $(pwd)/backend-example-docker/logs.txt:/app/logs.txt backend-example-docker
+f8eb31c7232d0f0710755d47cd436d1851c24c55856faf7302bc039dc9d5c6e5
+➜  1.10 git:(master) ✗ cd ../1.11
+➜  1.10 git:(master) ✗ docker run -d -p 5000:5000 frontend-example-docker
+e301d3481a2ccf8a87b9068a3e72a52336e9172027bbde8db3032492131b30fa
