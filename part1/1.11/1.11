@@ -1,0 +1,24 @@
+➜  1.11 git:(master) git clone https://github.com/docker-hy/backend-example-docker
+➜  1.11 git:(master) ✗ docker build -t backend-example-docker .
+➜  1.11 git:(master) ✗ docker run -it -p 8000:8000 -v $(pwd)/backend-example-docker/logs.txt:/app/logs.txt backend-example-docker
+
+> backend-example-docker@1.0.0 start /app
+> node index.js
+
+ENV values set as follows: {
+  DB: {
+    username: undefined,
+    password: undefined,
+    database: undefined,
+    host: 'localhost'
+  },
+  PORT: 8000,
+  FRONT_URL: '',
+  REDIS: undefined,
+  REDIS_PORT: 6379
+}
+[Exercise 2.6+] DB_USERNAME and/or DB_PASSWORD are not defined, skipping db connection
+[Exercise 2.5+] REDIS is not defined, skipping redis connection
+Started on port 8000
+::ffff:172.17.0.1 - GET / HTTP/1.1 304 - - 34.502 ms
+::ffff:172.17.0.1 - GET / HTTP/1.1 304 - - 4.137 ms
