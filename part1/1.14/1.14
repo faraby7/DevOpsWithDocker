@@ -1,0 +1,49 @@
+➜  1.14 git:(master) git clone https://github.com/docker-hy/rails-example-project.git
+Cloning into 'rails-example-project'...
+remote: Enumerating objects: 114, done.
+remote: Total 114 (delta 0), reused 0 (delta 0), pack-reused 114
+Receiving objects: 100% (114/114), 26.98 KiB | 230.00 KiB/s, done.
+Resolving deltas: 100% (4/4), done.
+➜  1.14 git:(master) ✗ docker build -t rails-example-project .
+Sending build context to Docker daemon  237.1kB
+Step 1/10 : FROM ruby:2.6.0
+ ---> ef8778f370d5
+Step 2/10 : WORKDIR /app
+ ---> Using cache
+ ---> 57e8a5e833df
+Step 3/10 : COPY ./rails-example-project /app
+ ---> Using cache
+ ---> 9a65d190a199
+Step 4/10 : RUN apt-get update && apt-get install -y nodejs
+ ---> Using cache
+ ---> 01e435b5ba48
+Step 5/10 : RUN bundle install
+ ---> Using cache
+ ---> 1b17fd4b5b89
+Step 6/10 : RUN gem install rails
+ ---> Using cache
+ ---> 4215e84356e7
+Step 7/10 : RUN rails --version
+ ---> Using cache
+ ---> db7e24192b65
+Step 8/10 : RUN rails db:migrate
+ ---> Using cache
+ ---> 15e06753cc5b
+Step 9/10 : EXPOSE 3000
+ ---> Using cache
+ ---> 9f79be2bc92e
+Step 10/10 : CMD ["rails", "s"]
+ ---> Using cache
+ ---> aad5d61e249b
+Successfully built aad5d61e249b
+Successfully tagged rails-example-project:latest
+➜  1.14 git:(master) ✗ docker run -it -p 3000:3000 rails-example-project
+=> Booting Puma
+=> Rails 5.2.2.1 application starting in development
+=> Run `rails server -h` for more startup options
+Puma starting in single mode...
+* Version 3.12.0 (ruby 2.6.0-p0), codename: Llamas in Pajamas
+* Min threads: 5, max threads: 5
+* Environment: development
+* Listening on tcp://0.0.0.0:3000
+Use Ctrl-C to stop
