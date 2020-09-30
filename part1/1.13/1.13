@@ -1,0 +1,38 @@
+➜  1.13 git:(master) ✗ git clone https://github.com/docker-hy/spring-example-project.git
+Cloning into 'spring-example-project'...
+remote: Enumerating objects: 36, done.
+remote: Total 36 (delta 0), reused 0 (delta 0), pack-reused 36
+Unpacking objects: 100% (36/36), done.
+➜  1.13 git:(master) ✗ docker build -t spring-example-project .
+Sending build context to Docker daemon  157.2kB
+Step 1/7 : FROM openjdk:8
+ ---> db530b5a3ccf
+Step 2/7 : RUN java -version
+ ---> Using cache
+ ---> a940c72ca1d2
+Step 3/7 : WORKDIR /spring-example-project
+ ---> Using cache
+ ---> a1400d0377d1
+Step 4/7 : COPY ./spring-example-project /spring-example-project
+ ---> Using cache
+ ---> b6f01ee20afe
+Step 5/7 : RUN ./mvnw package
+ ---> Using cache
+ ---> f9285fc58f48
+Step 6/7 : EXPOSE 8080
+ ---> Using cache
+ ---> 81866351367e
+Step 7/7 : CMD ["java", "-jar", "./target/docker-example-1.1.3.jar"]
+ ---> Using cache
+ ---> 0a1abb80b9d8
+Successfully built 0a1abb80b9d8
+Successfully tagged spring-example-project:latest
+➜  1.13 git:(master) ✗ docker run -it -p 8080:8080 spring-example-project
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.3.RELEASE)
