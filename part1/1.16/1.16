@@ -1,0 +1,8 @@
+➜  1.16 git:(master) docker pull devopsdockeruh/heroku-example
+➜  1.16 git:(master) brew tap heroku/brew && brew install heroku
+➜  1.16 git:(master) heroku login
+➜  1.16 git:(master) ✗ docker ps
+➜  1.16 git:(master) ✗ heroku container:login
+➜  1.16 git:(master) ✗ docker tag devopsdockeruh/heroku-example registry.heroku.com/part1-exo16/web
+➜  1.16 git:(master) ✗ docker push registry.heroku.com/part1-ex16/web
+➜  1.16 git:(master) ✗ heroku container:release --app part1-ex16 web
