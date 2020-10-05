@@ -1,0 +1,19 @@
+version: '3.8'  
+
+services:
+
+  frontend-service:
+    image: frontend_image
+    ports:
+      - 5000:5000
+    build: ../../part1/1.10
+    container_name: frontend_container
+
+  backend-service:
+    image: backend_image
+    ports:
+      - 8000:8000
+    build: ../../part1/1.11
+    volumes: 
+      - ../../part1/1.11/backend-example-docker/logs.txt:/app/logs.txt
+    container_name: backend_container

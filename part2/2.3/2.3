@@ -1,0 +1,15 @@
+
+➜  1.10 git:(master) git clone https://github.com/docker-hy/frontend-example-docker
+➜  1.11 git:(master) git clone https://github.com/docker-hy/backend-example-docker
+➜  2.3 git:(master) ✗ docker-compose up
+Starting frontend_container  ... done
+Recreating backend_container ... done
+Attaching to frontend_container, backend_container
+frontend_container  |
+frontend_container  | > frontend-example-docker@1.0.0 start /app
+frontend_container  | > webpack --mode production && serve -s -l 5000 dist
+frontend_container  |
+backend_container   |
+backend_container   | > backend-example-docker@1.0.0 start /app
+backend_container   | > node index.js
+backend_container   |
