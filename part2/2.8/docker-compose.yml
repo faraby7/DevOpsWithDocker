@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+
+  backend-service:
+    image: backend_image
+    ports:
+      - 8000:8000
+    build: ../../part1/1.11
+    environment:
+      - REDIS=redis-service
+      - REDIS_PORT=6379
+      - DB_USERNAME=postgres_user
+      - DB_PASSWORD=postgres_password
+      - DB_NAME=postgres_db
+      - DB_HOST=postgres-service
+    volumes:
+      - ../../part1/1.11/backend-example-docker/logs.txt:/app/logs.txt
+    depends_on:
+      - postgres-service
+    container_name: backend_container
+
+  frontend-service:
+    image: frontend_image
+    ports:
+      - 5000:5000
+    build: ../../part1/1.10
+    container_name: frontend_container
+
+  redis-service:
+    image: redis:6.0
+    ports:
+      - 6379:6379
+    container_name: redis_container
+
+  postgres-service:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres_user
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: postgres_db
+    restart: unless-stopped
+    container_name: postgres_container
+
+  proxy-service:
+    image: nginx
+    ports: 
+        - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - backend-service
+      - frontend-service
+    container_name: proxy_container
