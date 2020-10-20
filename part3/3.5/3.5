@@ -1,0 +1,8 @@
+
+➜  devopswithdocker git:(master) ✗ docker images
+frontend-example-docker   latest              4eae6f90be03        9 minutes ago       329MB
+backend-example-docker    latest              74b044a6b823        8 hours ago         135MB
+➜  frontend git:(master) docker build -t frontend-example-docker .
+➜  frontend git:(master) docker run -it -p 5000:5000 frontend-example-docker
+➜  backend git:(master) docker build -t backend-example-docker .
+➜  backend git:(master) docker run -it -p 8000:8000 backend-example-docker
