@@ -1,0 +1,24 @@
+➜  3.3 git:(master) ✗ docker build -t docker-builder .
+Sending build context to Docker daemon  3.584kB
+Step 1/6 : FROM docker:test-git
+ ---> 3f23faea1719
+Step 2/6 : WORKDIR /builder
+ ---> Using cache
+ ---> f12a294af377
+Step 3/6 : RUN git --version
+ ---> Using cache
+ ---> 068d75057198
+Step 4/6 : RUN docker -v
+ ---> Using cache
+ ---> a25ea5f541b3
+Step 5/6 : COPY ./entrypoint.sh /builder
+ ---> ec293054ef2d
+Step 6/6 : ENTRYPOINT [ "./entrypoint.sh" ]
+ ---> Running in dab45abb1908
+Removing intermediate container dab45abb1908
+ ---> 1d3c3b635f94
+Successfully built 1d3c3b635f94
+Successfully tagged docker-builder:latest
+➜  3.3 git:(master) ✗ docker run -v /var/run/docker.sock:/var/run/docker.sock -it docker-builder
+Enter the github URL :https://github.com/faraby7/react-todo-faraby
+.........
