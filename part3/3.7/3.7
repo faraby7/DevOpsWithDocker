@@ -1,0 +1,12 @@
+BEFORE
+➜  react_todo_app git:(main) ✗ docker build -t react_todo_app .
+➜  react_todo_app git:(main) ✗ docker run -it -p 3000:3000 react_todo_app
+➜  react_todo_app git:(main) ✗ docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+react_todo_app            latest              aa61655ba85c        About a minute ago   314MB
+AFTER
+➜  react_todo_app git:(main) ✗ docker build -t react_todo_app .
+➜  react_todo_app git:(main) ✗ docker run -it -p 3000:80 react_todo_app
+➜  react_todo_app git:(main) ✗ docker images
+REPOSITORY                TAG                 IMAGE ID            CREATED              SIZE
+react_todo_app            latest              e79248faf779        50 seconds ago       133MB

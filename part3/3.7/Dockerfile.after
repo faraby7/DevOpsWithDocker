@@ -1,0 +1,16 @@
+FROM node:alpine as builder
+
+WORKDIR /react_todo_app
+
+COPY  . .
+
+RUN npm install && \
+    adduser -D new_user && \
+    chown -R new_user /react_todo_app && \
+    npm run build
+
+USER new_user
+
+FROM nginx
+
+COPY --from=builder /react_todo_app/build /usr/share/nginx/html
